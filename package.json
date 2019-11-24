@@ -1,0 +1,33 @@
+{
+    "name": "3djs-highlighting",
+    "displayName": "3D Javascript Highlighting",
+    "description": "",
+    "publisher": "anbcodes",
+    "version": "0.1.0",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [
+		"*"
+	],
+    "main": "src/main.js",
+    "contributes": {
+        "languages": [{
+            "id": "3djs",
+            "aliases": ["3D Javascript", "3djs"],
+            "extensions": [".3djs"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "3djs",
+            "scopeName": "source.3djs",
+            "path": "./syntaxes/3djs.tmLanguage.json",
+            "embeddedLanguages": {
+                "meta.javascript": "javascript"
+            }
+        }]
+    }
+}

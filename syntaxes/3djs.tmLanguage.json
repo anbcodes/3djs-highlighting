@@ -1,0 +1,53 @@
+{
+  "scopeName": "source.3djs",
+  "patterns": [{ "include": "#js" }],
+  "repository": {
+    "expression": {
+      "patterns": [{ "include": "#letter" }, { "include": "#shortCREATE" }, { "include": "#this" }]
+    },
+    "letter": {
+      "match": "(CREATE) ([A-z]*) (named) ([A-z]*) {\n",
+      "name": "other.define",
+      "captures": {
+				"1": {
+					"name": "keyword.CREATE"
+        },
+        "2": {
+					"name": "entity.name.type"
+        },
+        "3": {
+					"name": "keyword.named"
+        },
+        "4": {
+					"name": "variable"
+        }
+			}
+		},
+		"shortCREATE": {
+      "match": "(CREATE) ([A-z]*) {\n",
+      "name": "other.define",
+      "captures": {
+				"1": {
+					"name": "keyword.CREATE"
+        },
+        "2": {
+					"name": "entity.name.type"
+        }
+			}
+    },
+    "js": {
+      "begin": "^",
+      "name": "meta.javascript",
+			"end": "$",
+			"patterns": [{ "include": "#expression" }, { "include": "#this" }, { "include": "#methods" }, { "include": "source.js" }]
+		},
+		"this": {
+			"match": "\\$",
+			"name": "keyword"
+    },
+    "methods": {
+			"match": "\\$|__Start__|__Render__|__KeyDown__|__KeyUp__|__MouseDown__|__MouseUp__|__MouseMove__|__Error__",
+			"name": "keyword"
+    }
+  }
+}
